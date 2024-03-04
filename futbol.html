@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #imagen{display: none;}
+
+    </style>
+</head>
+<body>
+    <h1>Equipos de Fútbol</h1>
+    <label for="equipo">Equipos</label>
+    <select onchange="CambiaEquipo()" id="equipo">
+        <option value="ninguno">Ninguno</option>
+        <option value="rm">Real Madrid</option>
+        <option value="bar">Barcelona</option>
+    </select>
+
+    <img src="" alt="" id="imagen" width="200" height="200">
+    <h1 id="titulo"></h1>
+    <div id="display"></div>
+
+    <script>
+
+        function CambiaEquipo(){
+            let equipoObj=document.getElementById("equipo");
+            let equipoValor=equipoObj.value;
+            CambiaAtributosEquipo(equipoValor);
+        }
+
+        function CambiaAtributosEquipo(equipo){
+            let imagen=document.getElementById("imagen");
+            let titulo=document.getElementById("titulo");
+            realmadrid= ["Bale","Ronaldo","CR7","Kroos","Zidane"];
+            barcelona=["Ter", "Iniesta","Pedri", "Xavi","Gavi"];
+
+            if (equipo == "rm"){
+                imagen.src="realmadrid.png";
+                titulo.innerHTML="Alineacion del Real Madrid";
+                imagen.style.display="block";
+                ImprimeAlineacion(realmadrid);
+
+            }
+
+            if(equipo == "bar"){
+                imagen.src="https://as01.epimg.net/img/comunes/fotos/fichas/equipos/large/3.png";
+                titulo.innerHTML="Alineacion del Barca";
+                imagen.style.display="block";
+                ImprimeAlineacion(barcelona);
+
+            } 
+
+            if (equipo == "ninguno"){
+                imagen.src="";
+                titulo.innerHTML="";
+                imagen.style.display="none";
+                ImprimeAlineacion();
+
+
+            }
+
+        }
+
+        function ImprimeAlineacion(alineacion){
+            display=document.getElementById("display");
+            display.innerHTML="";
+
+            for (i=0; i<alineacion.length; i++){
+                display.innerHTML+=alineacion[i]+"<br>";
+
+            }
+        }
+        
+
+
+    </script>
+
+</body>
+</html>
